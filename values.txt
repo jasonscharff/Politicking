@@ -1,0 +1,20 @@
+President Obama : Ted Cruz : 1000000
+Joe Biden : Ted Cruz: 800000
+President Obama : Donald Trump : 2000000
+Donald Trump : President Obama : 250000
+John Boehner : Charles Schumer : 100000
+Ted Cruz : John Boehner : 10
+Nancy Pelosi : President Obama : 5
+Steny Hoyer : Joe Biden : 50000
+Orinn Hatch : Joe Biden : 1000
+Steve Scalise : Steny Hoyer : 75000
+Kevin McCarthy : Steny Hoyer : 100000
+Nancy Pelosi : Joe Biden : 100
+Nancy Pelosi : John Boehner : 250000
+Steve Scalise : Kevin McCarthy : 25000
+Steve Scalise : Donald Trump : 500000
+Ted Cruz : Donald Trump : 5000
+Donald Trump : Kevin McCarthy : 1
+Donald Trump : John Boehner : 15000
+John Boehner : Donald Trump : 175000
+Charles Schumer : John Boehner : 135000
