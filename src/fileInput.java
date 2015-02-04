@@ -1,6 +1,8 @@
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.util.Collections;
+import java.util.List;
 import java.util.Scanner;
 
 
@@ -13,7 +15,10 @@ public class fileInput
 	public static void main(String[] args) 
 	{
 		ValueSignedGraph g = readFile();
-		Path p = g.Dijkstra("John Boehner", "President Obama");
+		Path p = g.Dijkstra("Kevin McCarthy", "Joe Biden");
+		List<String> theOrder = p.getPath();
+		Collections.reverse(theOrder);
+		System.out.println("ORDER" + theOrder);
 	}
 
 	public static ValueSignedGraph readFile()

@@ -8,7 +8,7 @@ public class ValueSignedGraph
 	{
 		adjacencyMatrix = new HashMap<String, Map<String, Integer>>();
 	}
-	
+
 	public void addVertex(String name)
 	{
 		if(adjacencyMatrix.get(name) == null)
@@ -17,14 +17,14 @@ public class ValueSignedGraph
 			adjacencyMatrix.put(name,temp);
 		}
 	}
-	
+
 	public void addEdge(String from, String to, int value)
 	{
 		Map<String, Integer> temp = adjacencyMatrix.get(from);
 		temp.put(to, value);
 		adjacencyMatrix.put(from, temp);
 	}
-	
+
 	public int getEdgeValue(String a, String b)
 	{
 		Map<String, Integer> temp = adjacencyMatrix.get(a);
@@ -37,22 +37,22 @@ public class ValueSignedGraph
 			return temp.get(b);
 		}
 	}
-	
+
 	public boolean hasVertex(String name)
 	{
 		return adjacencyMatrix.containsKey(name);
 	}
-	
+
 	public boolean hasEdge(String a, String b)
 	{
 		if(adjacencyMatrix.containsKey(a) == false)
 		{
 			throw new IndexOutOfBoundsException("Vertex does not exist");
 		}
-		
+
 		return adjacencyMatrix.get(a).containsKey(b);
 	}
-	
+
 	public Set<Connection> getConnections(String from)
 	{
 		Set<Connection> connections = new HashSet<Connection>();
@@ -62,13 +62,13 @@ public class ValueSignedGraph
 			Connection c = new Connection(name, values.get(name));
 			connections.add(c);
 		}
-		
+
 		return connections;
-		
+
 	}
-	
-		
-	
+
+
+
 	public Path Dijkstra(String from, String to)
 	{
 		PriorityQueue<Path> queue = new PriorityQueue<Path>();
@@ -87,27 +87,32 @@ public class ValueSignedGraph
 			}
 			else
 			{
-				Set<String> connections = adjacencyMatrix.get(current.getText()).keySet();
-				for (String connection : connections)
+				String text = current.getText();
+				Set<String> connections = adjacencyMatrix.get(text).keySet();
+				for(String connection : connections)
 				{
-					queue.add(new Path(connection, 
-							adjacencyMatrix.get(current.getText()).get(connection), current));
+					queue.add(new Path(connection, adjacencyMatrix.get(text).get(connection), current));
+
 				}
+				System.out.println(queue);
 			}
-			
+
 		}
+
 		while(current.getText().equals(to) == false && queue.isEmpty() == false);
+
 		if(queue.isEmpty())
 		{
 			return null;
 		}
 		else
 		{
+			System.out.println(current.getPath());
 			return current;
 		}
-		
-		
+
+
 	}
-	
-	
+
+
 }

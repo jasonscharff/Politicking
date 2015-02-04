@@ -1,5 +1,5 @@
 President Obama : Ted Cruz : 1000000
-Joe Biden : Ted Cruz: 800000
+Joe Biden : Ted Cruz : 800000
 President Obama : Donald Trump : 2000000
 Donald Trump : President Obama : 250000
 John Boehner : Charles Schumer : 100000
@@ -17,4 +17,4 @@ Ted Cruz : Donald Trump : 5000
 Donald Trump : Kevin McCarthy : 1
 Donald Trump : John Boehner : 15000
 John Boehner : Donald Trump : 175000
-Charles Schumer : John Boehner : 135000
+Charles Schumer : President Obama : 1000

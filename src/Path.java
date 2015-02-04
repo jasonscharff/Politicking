@@ -10,26 +10,33 @@ public class Path implements Comparable
 	public Path(String person, int value)
 	{
 		currentVal = value;
-		previous = new ArrayList<String>();
+		previous = new LinkedList<String>();
 		previous.add(person);
 	}
 	
 	public Path(String person, int value, Path former)
 	{
 		previous = former.getPath();
-		previous.add(person);
+		System.out.println("FORMER = " + previous);
+		previous.add(0, person);
 		currentVal = value + former.getValue();
 	}
 	
 	
+	
 	public List<String> getPath()
 	{
-		return previous;
+		List<String>newPath = new LinkedList<String>();
+		for(String c : previous)
+		{
+			newPath.add(c);
+		}
+		return newPath;
 	}
 	
 	public void add(String person, int val)
 	{
-		previous.add(person);
+		previous.add(0, person);
 		currentVal += val;
 				
 	}
@@ -40,7 +47,7 @@ public class Path implements Comparable
 	}
 	public String getText()
 	{
-		return previous.get(previous.size() - 1);
+		return previous.get(0);
 	}
 
 
@@ -49,6 +56,13 @@ public class Path implements Comparable
 	{
 		return this.currentVal - ((Path) o).currentVal;
 	}
+	
+	public String toString()
+	{
+		return getText();
+	}
+	
+	
 
 
 	
