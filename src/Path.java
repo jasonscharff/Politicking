@@ -14,10 +14,17 @@ public class Path implements Comparable
 		previous.add(person);
 	}
 	
+	public Path (Object o)
+	{
+		if (o == null)
+		{
+			previous = null;
+		}
+	}
+	
 	public Path(String person, int value, Path former)
 	{
 		previous = former.getPath();
-		System.out.println("FORMER = " + previous);
 		previous.add(0, person);
 		currentVal = value + former.getValue();
 	}
@@ -59,8 +66,24 @@ public class Path implements Comparable
 	
 	public String toString()
 	{
-		return getText();
+		if(previous == null)
+		{
+			return "No Path Found";
+		}
+		String toReturn = "";
+		int count = 1;
+		for (int i = previous.size() - 1; i >= 0; i--)
+		{
+			
+			toReturn += count + ". " + previous.get(i);
+			toReturn += "\n";
+			count++;
+		}
+		toReturn += "Value: " + currentVal;
+		return toReturn;
+//		return getText();
 	}
+	
 	
 	
 

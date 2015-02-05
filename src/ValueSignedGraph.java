@@ -4,9 +4,14 @@ import java.util.*;
 public class ValueSignedGraph 
 {
 	Map<String, Map<String, Integer>> adjacencyMatrix;
+	Map<String, Integer> numConnecting;
+
+	
+	
 	public ValueSignedGraph()
 	{
 		adjacencyMatrix = new HashMap<String, Map<String, Integer>>();
+		numConnecting = new HashMap<String, Integer>();
 	}
 
 	public void addVertex(String name)
@@ -15,6 +20,7 @@ public class ValueSignedGraph
 		{
 			Map<String, Integer> temp = new HashMap<String, Integer>();
 			adjacencyMatrix.put(name,temp);
+			numConnecting.put(name, 0);
 		}
 	}
 
@@ -23,6 +29,7 @@ public class ValueSignedGraph
 		Map<String, Integer> temp = adjacencyMatrix.get(from);
 		temp.put(to, value);
 		adjacencyMatrix.put(from, temp);
+		numConnecting.put(to, numConnecting.get(to) + 1);
 	}
 
 	public int getEdgeValue(String a, String b)
@@ -67,16 +74,28 @@ public class ValueSignedGraph
 
 	}
 
-
+	
 
 	public Path Dijkstra(String from, String to)
 	{
+		
+		Map<String, Integer> numberAdded= new HashMap<String, Integer>();
+		for(String key : adjacencyMatrix.keySet())
+		{
+			numberAdded.put(key, 0);
+		}
+		
 		PriorityQueue<Path> queue = new PriorityQueue<Path>();
 		Map<String, Integer> level = adjacencyMatrix.get(from);
+		if(level == null || adjacencyMatrix.get(to) == null)
+		{
+			return new Path(null);
+		}
 		for (String x : level.keySet())
 		{
 			queue.add(new Path(x, level.get(x)));
 		}
+		
 		Path current;
 		do
 		{
@@ -91,10 +110,12 @@ public class ValueSignedGraph
 				Set<String> connections = adjacencyMatrix.get(text).keySet();
 				for(String connection : connections)
 				{
-					queue.add(new Path(connection, adjacencyMatrix.get(text).get(connection), current));
-
+					if(numberAdded.get(connection) <= numConnecting.get(connection))
+					{
+						queue.add(new Path(connection, adjacencyMatrix.get(text).get(connection), current));
+						numberAdded.put(connection, numberAdded.get(connection) + 1);
+					}
 				}
-				System.out.println(queue);
 			}
 
 		}
@@ -103,7 +124,7 @@ public class ValueSignedGraph
 
 		if(queue.isEmpty())
 		{
-			return null;
+			return new Path(null);
 		}
 		else
 		{
