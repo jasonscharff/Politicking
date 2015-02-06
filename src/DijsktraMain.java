@@ -8,12 +8,16 @@ import java.util.Scanner;
  * 
  * Name:		Jason Scharff
  * Block:		A
- * Date:		12/14/14
+ * Date:		2/6/15
  * 
  *  Program #4: Shortest Path
- *  Description:
- *  	
- *      
+ *  Description: This program implements a slight variation of Dijsktra's shortest
+ *  path algorithm such that it can find the shortest distance between two vertices
+ *  on a graph. The context is that if a person in politics needs to ask a favor from
+ *  someone else in politics each favor costs something (figuratively or monetarily).
+ *  This helps politicians find the cheapest path so getting political favors can
+ *  be easier than ever before. This particular class handles the file input as
+ *  described in the readme and the user input of the origin and destination. 
  ******************************************************************************/
 
 public class DijsktraMain 

@@ -1,5 +1,17 @@
 import java.util.*;
-
+/** ValueSignedGraph Class
+* 
+* The ValueSignedGraph class implements a directed graph with an integer
+* weight assigned for each edge. This is done through a HashMap of HashMaps
+* which stores the graph in the form of an adjacency matrix of every single
+* vertex and its respective connections. In addition to storing the adjacency
+* matrix the number of edges connecting to each vertex is also recorded which
+* is used in the modified Dijkstra's algorithm also implemented in this class. 
+* The bulk of code is dedicated to the Dijkstra's algorithm which is described
+* both in the readme file and in the comment for the individual method aptly
+* named "Dijkstra"
+* 
+******************************************************************************/
 
 public class ValueSignedGraph 
 {

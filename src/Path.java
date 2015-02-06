@@ -1,5 +1,18 @@
 import java.util.*;
-
+/** Path class
+* 
+* The path class is used in conjunction with ValueSignedGraph's implementation
+* of Dijsktra's to keep track of all the vertices visited in a particular math
+* and its current weight. Thus it keeps two essential data fields: the list of previously
+* visited vertices and the current sum. Because it implements Comparable it is able to be
+* used in the priority queue which just compares objects by value (weight). The other
+* important data field is "starter" which is normally null, but right before the final return
+* in the Dijsktra's method of ValueSignedGraph added so that when it is printed using
+* the toString of Path it prints the origin as well as the entire path. Because Dijsktra's
+* returns a path object the other purpose of this class is to provide a beautified toString
+* so the path and total value is clear to the user.
+* 
+******************************************************************************/
 
 public class Path implements Comparable
 {
@@ -10,7 +23,7 @@ public class Path implements Comparable
 	/**
 	 * Constructor method for creating a brand new path. This
 	 * is to be used when there is no previous record of people
-	 * travelled through so it just creates a new path out of a single person
+	 * traveled through so it just creates a new path out of a single person
 	 * with the starting value
 	 * @param person
 	 * @param value
